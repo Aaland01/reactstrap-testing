@@ -1,13 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.nav{
+  margin-bottom: 1em;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 3em;
+  margin: 0 0 0 1em;
   will-change: transform;
   transition: transform 200ms;
 }
@@ -18,4 +15,10 @@
 
 .whitetext{
   color: white;
+}
+
+.image{
+  width: 100%;
+  max-width: 10em;
+  height: auto;
 }
