@@ -30,8 +30,8 @@ const Navigation = () => {
         {/* ms-auto ensures right placement */}
           <Nav className='ms-auto' navbar>
             <NavItem>
-              <NavLink>
-                Some Placeholder
+              <NavLink href='https://github.com/Aaland01' target='_blank'>
+                Github
               </NavLink>
             </NavItem>
             <NavItem>
