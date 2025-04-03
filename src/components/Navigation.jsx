@@ -16,7 +16,7 @@ const Navigation = () => {
       <Login />
 
       <Navbar className='nav' color="dark" expand="md" dark>
-        <NavbarBrand >
+        <NavbarBrand href='/'>
           <img className='logo' src="/BlueLogo.png" />
         </NavbarBrand>
 
@@ -35,8 +35,8 @@ const Navigation = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                Placeholder two
+              <NavLink href="/about">
+                About
               </NavLink>
             </NavItem>
             <NavItem>
