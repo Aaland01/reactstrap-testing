@@ -2,6 +2,7 @@ import { Button, Navbar, NavbarBrand, Collapse, NavbarToggler, NavItem, Nav, Nav
 import { useState } from 'react'
 import Login from './Login';
 import { useLogin } from './LoginContext';
+import { Link } from 'react-router-dom';
 
 
 const Navigation = () => {
@@ -16,7 +17,7 @@ const Navigation = () => {
       <Login />
 
       <Navbar className='nav' color="dark" expand="md" dark>
-        <NavbarBrand href='/'>
+        <NavbarBrand tag={Link} to="/">
           <img className='logo' src="/BlueLogo.png" />
         </NavbarBrand>
 
@@ -28,20 +29,20 @@ const Navigation = () => {
 
         <Collapse className='me-3' isOpen={collapse} navbar>
         {/* ms-auto ensures right placement */}
-          <Nav className='ms-auto' navbar>
+          <Nav className='ms-auto gap-md-4' navbar>
             <NavItem>
               <NavLink href='https://github.com/Aaland01' target='_blank'>
                 Github
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/about">
+              <NavLink tag={Link} to="/about">
                 About
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                Final Placeholder
+              <NavLink tag={Link} to="/gallery">
+                Gallery
               </NavLink>
             </NavItem>
           </Nav>

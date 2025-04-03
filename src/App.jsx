@@ -5,6 +5,7 @@ import { LoginWrapper } from './components/LoginContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
+import Gallery from './components/Gallery';
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />}/>
             <Route path='/about' element={<About />}/>
+            <Route path='/gallery' element={<Gallery />}/>
           </Routes>
 
         </LoginWrapper>
