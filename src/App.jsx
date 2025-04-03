@@ -19,6 +19,9 @@ function App() {
         </NavbarBrand>
 
         <NavbarToggler className='ms-auto me-4' onClick={toggleNav}/>
+        <Button className='d-md-none' color='info' onClick={toggle}>Log in</Button>
+
+
         <Collapse className='ms-2' isOpen={collapse} navbar>
           <Nav className='ms-auto' navbar>
             <NavItem>
@@ -38,9 +41,10 @@ function App() {
             </NavItem>
           </Nav>
         </Collapse>
-        <Button color='info' onClick={toggle}>Log in</Button>
-      </Navbar>
 
+        <Button className='d-none d-md-block' color='info' onClick={toggle}>Log in</Button>
+      </Navbar>
+      
 
       <Container className='cont'>
         <Row className='row'>
