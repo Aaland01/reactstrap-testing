@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Gallery from './components/Gallery';
+import Bookdata from './components/Bookdata';
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path='/about' element={<About />}/>
             <Route path='/gallery' element={<Gallery />}/>
+            <Route path='/bookdata' element={<Bookdata />}/>
           </Routes>
 
         </LoginWrapper>
