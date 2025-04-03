@@ -18,7 +18,7 @@ function App() {
               in the dark. There is more than what you see.
             </Col>
             <Col className='column2'>
-              <img className='image' src='animalWell.png'/>
+              <img className='image' src='BlueLogo.png'/>
             </Col>
           </Row>
         </Container>

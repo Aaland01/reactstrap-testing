@@ -17,7 +17,7 @@ const Navigation = () => {
 
       <Navbar className='nav' color="dark" expand="md" dark>
         <NavbarBrand >
-          <img className='logo' src="/animalWell.png" />
+          <img className='logo' src="/BlueLogo.png" />
         </NavbarBrand>
 
         <NavbarToggler className='ms-auto me-4' onClick={toggleNav}/>
