@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import { LoginWrapper } from './components/LoginContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
+import Book from './components/Book';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import Bookdata from './components/Bookdata';
@@ -19,6 +20,7 @@ function App() {
             <Route path='/about' element={<About />}/>
             <Route path='/gallery' element={<Gallery />}/>
             <Route path='/bookdata' element={<Bookdata />}/>
+            <Route path='/book' element={<Book />}/>
           </Routes>
 
         </LoginWrapper>
