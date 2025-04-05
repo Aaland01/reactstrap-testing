@@ -1,29 +1,52 @@
 import { AgGridReact } from "ag-grid-react";
+import { useState, useEffect } from "react";
 import "ag-grid-community/styles/ag-grid.css"
 import "ag-grid-community/styles/ag-theme-balham.css"
 
 const table = {
   columns: [
     { headerName: "Title", field: "title"},
-    { headerName: "Author", field: "author"},
-    { headerName: "Pages", field: "pages"},
-  ],
-  rowData: [
-    { title: "Alfa", author: "Romeo", pages: 42},
-    { title: "Beta", author: "Tate", pages: 69},
-    { title: "Charlie", author: "Chaplin", pages: 1914},
+    { headerName: "Author", field: "author", filter:true},
+    { headerName: "Editions", field: "editions", filter: true},
+    { headerName: "Cover ID", field: "coverID"},
   ]
 }
 
+
+
 const Bookdata = () => {
+
+  let loadingData = {title: "Loading", author: "Please wait ...", editions: "", coverID: ""}
+
+  const [data, setData] = useState([loadingData])
+
+  useEffect( () => {
+    fetch("http://openlibrary.org/subjects/drama.json?published_in=2000")
+      .then(response => response.json())
+      .then(json => json.works)
+      .then(works => 
+        works.map( work => {
+          return{
+            title: work.title,
+            author: work.authors[0].name,
+            editions: work.edition_count,
+            coverID: work.cover_id,
+          } 
+        })
+      )
+      .then(books => setData(books))
+  }, []);
+
   return (
     <>
       <h1 className="text-center"> Books</h1>
       
-      <div className="ag-theme-balham whitetext">
+      <div className="ag-theme-balham whitetext mx-auto"
+        style={{height: "30em", width: "60em"}}
+      >
         <AgGridReact
           columnDefs={table.columns}
-          rowData={table.rowData}
+          rowData={data}
           pagination
         />
 
