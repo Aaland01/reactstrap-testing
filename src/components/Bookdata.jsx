@@ -11,6 +11,7 @@ const table = {
     { headerName: "Author", field: "author", filter:true},
     { headerName: "Editions", field: "editions", filter: true},
     { headerName: "Cover ID", field: "coverID"},
+    { headerName: "Author ID", field: "authorID"},
   ]
 }
 
@@ -24,6 +25,15 @@ const Bookdata = () => {
   const [isLoading, setLoading] = useState(true)
   const navigate = useNavigate();
 
+  /*
+  "authors": [
+        {
+          "key": "/authors/OL21594A",
+          "name": "Jane Austen"
+        }
+      ],
+   */
+
   useEffect( () => {
     fetch("http://openlibrary.org/subjects/drama.json?published_in=2000")
       .then(response => response.json())
@@ -35,7 +45,8 @@ const Bookdata = () => {
             author: work.authors[0].name,
             editions: work.edition_count,
             coverID: work.cover_id,
-          } 
+            authorID: work.authors[0].key.split("/")[2]
+          }
         })
       )
       .then(books => {
@@ -71,7 +82,9 @@ const Bookdata = () => {
           pagination
           paginationPageSize={10}
           paginationPageSizeSelector={false}
-          onRowClicked={row => navigate(`/book?title=${row.data.title}&author=${row.data.author}`)}
+          onRowClicked={row => navigate(
+              `/book?title=${row.data.title}&author=${row.data.author}&authorID=${row.data.authorID}`
+          )}
         />
 
       </div>
