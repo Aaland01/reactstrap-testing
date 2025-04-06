@@ -3,11 +3,11 @@ import './App.css'
 import Navigation from './components/Navigation';
 import { LoginWrapper } from './components/LoginContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Book from './components/Book';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Bookdata from './components/Bookdata';
+import Home from './routes/Home';
+import Book from './routes/Book';
+import About from './routes/About';
+import Gallery from './routes/Gallery';
+import Bookdata from './routes/Bookdata';
 function App() {
 
   return (
