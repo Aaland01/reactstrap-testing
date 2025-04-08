@@ -73,7 +73,7 @@ const Bookdata = () => {
 
       </div>
 
-      <div className="ag-theme-balham whitetext mx-auto"
+      <div className="ag-theme-balham-dark whitetext mx-auto"
         style={{height: "30em", width: "60em"}}
       >
         <AgGridReact

@@ -16,7 +16,7 @@ const Navigation = () => {
     <>
       <Login />
 
-      <Navbar className='nav' color="dark" expand="md" dark>
+      <Navbar className='nav' color="accent" expand="md" dark>
         <NavbarBrand tag={Link} to="/">
           <img className='logo' src="/BlueLogo.png" />
         </NavbarBrand>
@@ -24,7 +24,7 @@ const Navigation = () => {
         <NavbarToggler className='ms-auto me-4' onClick={toggleNav}/>
 
         {/* Button for responsive small screens*/}
-        <Button className='d-md-none' color='info' onClick={toggleLogin}>Log in</Button>
+        <Button className='d-md-none' color='secondary' onClick={toggleLogin}>Log in</Button>
 
 
         <Collapse className='me-3' isOpen={collapse} navbar>
@@ -49,7 +49,7 @@ const Navigation = () => {
         </Collapse>
 
         {/* Button for large screens - ensuring right placement */}
-        <Button className='d-none d-md-block' color='info' onClick={toggleLogin}>Log in</Button>
+        <Button className='d-none d-md-block' color='secondary' onClick={toggleLogin}>Log in</Button>
       </Navbar>
 
     </>
