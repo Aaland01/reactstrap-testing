@@ -20,3 +20,7 @@ $theme-colors: map-merge($custom-map, $theme-colors);
 
 // import bootstrap - goes last to not override custom variables
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+.modal-content {
+    --bs-border-color: #{$primary};
+}

@@ -12038,5 +12038,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.modal-content {
+  --bs-border-color: #668396;
+}
 
 /*# sourceMappingURL=custom.css.map */
