@@ -4,6 +4,7 @@ import { Button, Container } from "reactstrap";
 const Gallery = () => {
 
   const [person, setPerson] = useState({name:"",year:""});
+  const [name, setName] = useState("");
 
   const getPersonDetails = () => {
     const tempPerson = "nm0002354"
@@ -33,8 +34,16 @@ const Gallery = () => {
         <h1 className="text-center">Gallery</h1>
         
         <div className="text-center mt-5">
-          <Button onClick={getPersonDetails} color="primary">
-            See person
+          <label htmlFor="name"> Enter name: </label>
+          <input type="text" name="name" id="name" 
+            value={name}
+            onChange={e => {
+              setName(e.target.value);
+            }}
+          />
+          <br/>
+          <Button onClick={getPersonDetails} color="primary" className="mt-3">
+            Search { name ? `for ${name} ` : ""}
           </Button>
           <h3>{person.name}</h3>
           <h5>{person.year}</h5>

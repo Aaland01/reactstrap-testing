@@ -10,12 +10,44 @@ export const API_URL = "http://4.237.58.241:3000"
 
 const Login = () => {
 
+  // Login context
   const {showLogin, toggleLogin} = useLogin();
 
-  const [username, setUsername] = useState();
-  const [pass, setPass] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const login = () => {
+    const url = `${API_URL}/user/login`;
+
+    return fetch( url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // temporary hardcoded credentials
+      body: JSON.stringify({
+        email: username,
+        password: password
+      }),
+    })
+    .then((res) => 
+      res.json()
+        .then((res) => {
+          //!WARNING this is not industry standard or safe
+          // but a simplification. Better methods later
+          localStorage.setItem("token", res.bearerToken.token)
+          console.log(res)
+        })
+    )
+    .catch(error => console.error(error));
+  };
+
+
+  /**
+   * Dev method
+   * 
+   */
+  const cheatLogin = () => {
     const url = `${API_URL}/user/login`;
 
     return fetch( url, {
@@ -47,7 +79,10 @@ const Login = () => {
         <ModalHeader toggle={toggleLogin}>
           Login
         </ModalHeader>
-        <Form>
+        <Form onSubmit={e => {
+          e.preventDefault();
+          login();
+        }}>
           <ModalBody>
             <FormGroup row>
               <Label for="username">
@@ -59,10 +94,7 @@ const Login = () => {
                 placeholder=""
                 type="text"
                 value={username}
-                onChange={ e => {
-                  setUsername(e.target.username)
-                  }
-                }
+                onChange={ e => setUsername(e.target.value)}
                 />
             </FormGroup>
             <FormGroup row>
@@ -74,6 +106,8 @@ const Login = () => {
                 name="password"
                 placeholder=""
                 type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
             </FormGroup>
           
@@ -81,8 +115,9 @@ const Login = () => {
           <ModalFooter>
             <Button color="success" type='submit'>Log in</Button>
             <Button color="danger" onClick={toggleLogin}>Cancel</Button>
+            {/*  Cheatlogin for development   */}
             <div>
-              <Button color="secondary" onClick={login}>Cheatlogin</Button>
+              <Button color="secondary" onClick={cheatLogin}>cheatLogin</Button>
             </div>
           </ModalFooter>
         </Form>
