@@ -1,14 +1,13 @@
 import { Button, FormGroup, Input, Form, Label, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
 import { useLogin } from './LoginContext';
 
-/**
- * Opens a log in window
- * 
- * 
- */
-const Login = () => {
 
-  const API_URL = "http://4.237.58.241:3000"
+/**
+   * The url for the API we are testing with
+   */
+export const API_URL = "http://4.237.58.241:3000"
+
+const Login = () => {
 
   const {showLogin, toggleLogin} = useLogin();
 
@@ -20,6 +19,7 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      // temporary hardcoded credentials
       body: JSON.stringify({
         email: "mike@gmail.com",
         password: "password"
