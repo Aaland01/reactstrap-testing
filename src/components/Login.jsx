@@ -8,7 +8,28 @@ import { useLogin } from './LoginContext';
  */
 const Login = () => {
 
+  const API_URL = "http://4.237.58.241:3000"
+
   const {showLogin, toggleLogin} = useLogin();
+
+  const login = () => {
+    const url = `${API_URL}/user/login`;
+
+    return fetch( url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "mike@gmail.com",
+        password: "password"
+      }),
+    })
+    .then((res) => 
+      res.json().then((res) => console.log(res))
+    )
+    .catch(error => console.error(error));
+  };
 
   return (
     <>
@@ -41,7 +62,7 @@ const Login = () => {
         </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="success">Log in</Button>
+          <Button color="success" onClick={login}>Log in</Button>
           <Button color="danger" onClick={toggleLogin}>Cancel</Button>
         </ModalFooter>
       </Modal>
