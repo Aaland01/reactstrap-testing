@@ -26,7 +26,13 @@ const Login = () => {
       }),
     })
     .then((res) => 
-      res.json().then((res) => console.log(res))
+      res.json()
+        .then((res) => {
+          //!WARNING this is not industry standard or safe
+          // but a simplification. Better methods later
+          localStorage.setItem("token", res.bearerToken.token)
+          console.log(res)
+        })
     )
     .catch(error => console.error(error));
   };
