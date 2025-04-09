@@ -43,34 +43,45 @@ const Login = () => {
         <ModalHeader toggle={toggleLogin}>
           Login
         </ModalHeader>
-        <ModalBody>
-        <Form>
-          <FormGroup row>
-            <Label for="username">
-              Username
-            </Label>
-            <Input 
-              id="username" 
-              name="username"
-              placeholder=""
-              type="username"/>
-          </FormGroup>
-          <FormGroup row>
-            <Label for="password">
-              Password
-            </Label>
-            <Input 
-              id="password" 
-              name="password"
-              placeholder=""
-              type="password"/>
-          </FormGroup>
+        <Form onSubmit={
+          (event) => {
+            // Ensures the page isnt refreshed
+            event.preventDefault();
+            // The element that triggered the submit function
+            console.log(event.target);
+            console.log("Input username:");
+            console.log(event.target.elements.username.value);
+            
+          }
+        }>
+          <ModalBody>
+            <FormGroup row>
+              <Label for="username">
+                Username
+              </Label>
+              <Input 
+                id="username" 
+                name="username"
+                placeholder=""
+                type="username"/>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="password">
+                Password
+              </Label>
+              <Input 
+                id="password" 
+                name="password"
+                placeholder=""
+                type="password"/>
+            </FormGroup>
+          
+          </ModalBody>
+          <ModalFooter>
+            <Button color="success" type='submit'>Log in</Button>
+            <Button color="danger" onClick={toggleLogin}>Cancel</Button>
+          </ModalFooter>
         </Form>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="success" onClick={login}>Log in</Button>
-          <Button color="danger" onClick={toggleLogin}>Cancel</Button>
-        </ModalFooter>
       </Modal>
     </>
   )
