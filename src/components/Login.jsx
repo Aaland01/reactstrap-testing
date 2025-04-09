@@ -1,5 +1,6 @@
 import { Button, FormGroup, Input, Form, Label, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap'
 import { useLogin } from './LoginContext';
+import { useState } from 'react';
 
 
 /**
@@ -10,6 +11,9 @@ export const API_URL = "http://4.237.58.241:3000"
 const Login = () => {
 
   const {showLogin, toggleLogin} = useLogin();
+
+  const [username, setUsername] = useState();
+  const [pass, setPass] = useState();
 
   const login = () => {
     const url = `${API_URL}/user/login`;
@@ -43,17 +47,7 @@ const Login = () => {
         <ModalHeader toggle={toggleLogin}>
           Login
         </ModalHeader>
-        <Form onSubmit={
-          (event) => {
-            // Ensures the page isnt refreshed
-            event.preventDefault();
-            // The element that triggered the submit function
-            console.log(event.target);
-            console.log("Input username:");
-            console.log(event.target.elements.username.value);
-            
-          }
-        }>
+        <Form>
           <ModalBody>
             <FormGroup row>
               <Label for="username">
@@ -63,7 +57,13 @@ const Login = () => {
                 id="username" 
                 name="username"
                 placeholder=""
-                type="username"/>
+                type="text"
+                value={username}
+                onChange={ e => {
+                  setUsername(e.target.username)
+                  }
+                }
+                />
             </FormGroup>
             <FormGroup row>
               <Label for="password">
@@ -73,13 +73,17 @@ const Login = () => {
                 id="password" 
                 name="password"
                 placeholder=""
-                type="password"/>
+                type="password"
+              />
             </FormGroup>
           
           </ModalBody>
           <ModalFooter>
             <Button color="success" type='submit'>Log in</Button>
             <Button color="danger" onClick={toggleLogin}>Cancel</Button>
+            <div>
+              <Button color="secondary" onClick={login}>Cheatlogin</Button>
+            </div>
           </ModalFooter>
         </Form>
       </Modal>
