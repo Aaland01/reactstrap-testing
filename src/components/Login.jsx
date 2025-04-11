@@ -7,7 +7,7 @@ import { useState } from 'react';
    * The url for the API we are testing with
    * Might not work outside of the unit web computing
    */
-export const API_URL = "http://4.237.58.241:3000"
+export const API_URL = "https://dummyjson.com"
 
 const Login = () => {
 
@@ -28,9 +28,8 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      // temporary hardcoded credentials
       body: JSON.stringify({
-        email: username,
+        username: username,
         password: password
       }),
     })
@@ -44,8 +43,9 @@ const Login = () => {
           }
           //!WARNING this is not industry standard or safe
           // but a simplification. Better methods later
-          localStorage.setItem("token", res.bearerToken.token)
+          localStorage.setItem("token", res.accessToken)
           console.log(res)
+          toggleLogin;
         })
     )
     .catch(error => console.error(error));
@@ -105,8 +105,8 @@ const Login = () => {
       },
       // temporary hardcoded credentials
       body: JSON.stringify({
-        email: "mike@gmail.com",
-        password: "password"
+        username: "jamesd",
+        password: "jamesdpass"
       }),
     })
     .then((res) => 
@@ -114,7 +114,7 @@ const Login = () => {
         .then((res) => {
           //!WARNING this is not industry standard or safe
           // but a simplification. Better methods later
-          localStorage.setItem("token", res.bearerToken.token)
+          localStorage.setItem("token", res.accessToken)
           console.log(res)
         })
     )
